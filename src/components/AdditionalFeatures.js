@@ -1,7 +1,11 @@
 import React from 'react';
 import AdditionalFeature from './AdditionalFeature';
+import { connect } from 'react-redux'
+
+import { updateStoreAC } from '../actions'
 
 const AdditionalFeatures = props => {
+  console.log(props, 'addfeatures props')
   return (
     <div className="content">
       <h4>Additional Features</h4>
@@ -18,4 +22,14 @@ const AdditionalFeatures = props => {
   );
 };
 
-export default AdditionalFeatures;
+const mapStateToProps = state => {
+  console.log(state, 'mSTP addfeatures log')
+  return {
+    store: state.store
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { updateStoreAC }
+)(AdditionalFeatures);
